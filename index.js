@@ -1,0 +1,110 @@
+// TODO: Include packages needed for this application
+const inquirer = require('inquirer')
+const fs = require('fs')
+
+// TODO: Create an array of questions for user input
+const questions = [];
+
+// TODO: Create a function to write README file
+function writeToFile(fileName, data) {
+    fs.writeFile('README.md',
+        `#${data.title} ${"badge creations"}
+        ##Description
+        ${response.motivated}. ${data.why}. 
+        ${response.problem}. ${data.learn}.
+        ## Table of contents
+        - [Installation](#installation)
+        - [Usage](#usage)
+        - [Credits](#credits)
+        - [License](#license)
+        ##Installation
+        ${data.install}
+        ## Usage
+        ${data.usage}
+        ## Credits
+        ${data.credits}
+        ## License
+        ${data.license}
+        ## How to Contribute
+        ${data.contribution}
+        ## Tests
+        ${data.tests}
+        ## Questions
+        ${data.github}`,
+        
+    (err) => {
+        err ? console.log('error') : console.log('nice')
+    })
+}
+
+
+// TODO: Create a function to initialize app
+function init() {
+    inquirer
+    .prompt([
+        {
+            type: 'input',
+            message: 'What is the title of your project?',
+            name: 'title',
+        },
+        {
+            type: 'input',
+            message: 'What was your motivation when creating this project?',
+            name: 'motivated'
+        },
+        {
+            type: 'input',
+            message: 'Why did you build this project?',
+            name: 'why'
+        },
+        {
+            type: 'input',
+            message: 'What problem does this project solve?',
+            name: 'problem'
+        },
+        {
+            type: 'input',
+            message: 'What did you learn when developing this project?',
+            name: 'learn'
+        },
+        {
+            type: 'input',
+            message: 'What are the steps to install your project?',
+            name: 'install'
+        },
+        {
+            type: 'input',
+            message: 'What are some examples of how to use this project?',
+            name: 'usage'
+        },
+        {
+            type: 'input',
+            message: 'Who contributed to this project?',
+            name: 'credits'
+        },
+        {
+            type: 'list',
+            message: 'What license does your project have?',
+            name: 'license',
+            choices: ['jumbo', 'large', 'standard', 'small']
+        },
+        {
+            type: 'input',
+            message: 'How could someone contribute to your project?',
+            name: 'contribution'
+        },
+        {
+            type: 'input',
+            message: 'What are some tests users can run?',
+            name: 'tests'
+        },
+        {
+            type: 'input',
+            message: 'What is your gitHub Username?',
+            name: 'github'
+        },
+    ])
+}
+
+// Function call to initialize app
+init();
